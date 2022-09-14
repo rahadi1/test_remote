@@ -1,0 +1,233 @@
+#
+GIT adalah VCS atau VERSION CONTROL SYSTEM terdistribusi untuk mengelola perubahan file di dalam folder
+VCS adalah sistem yang mengelola perubahan dari sebuah dokumen, program, komputer dan lain.
+
+KENAPA PERLU MENGGUNAKAN VCS?
+melacak versi
+kolaborasi
+
+FOLDER yang tersimpan di dalam GIT disebut REPOSITORY / REPO
+
+RIWAYAT perubahan file disimpan menggunakan serangkaian COMMIT
+
+COMMIT adalah snapshot dari repo kita
+
+HASH adalah kode unik dari setiap COMMIT
+
+CHECKOUT adalah saat kita ingin pindah ke suatu COMMIT
+
+PERCABANGAN versi disebut BRANCH
+
+PENGGABUNGAN versi disebut MERGE
+
+
+#
+GITHUB adalah layanan cloud untuk menyimpan dan mengelola project / repo git.
+
+REMOTE adalah sumber yang memiliki repo
+
+PUSH adalah mengupload COMMIT ke GITHUB
+
+PULL adalah mendownload COMMIT ke komputer
+
+CLONE adalah menyalin repo dari GITHUB atau remote ke local computer
+
+FORKING adalah proses duplikasi repository orang lain (beserta history COMMIT) ke dalam repository kita.
+FORKING menjadi jembatan antara repo original dengan duplikatnya
+
+
+# GIT
+
+COMMAND:
+
+git init = untuk initialisasi repo git di komputer kita
+git add <file> = menambahkan file ke dalam staging area
+git status =  untuk mengetahui status repo kita
+git commit = untuk melakukan commit menambah file dari staging area ke dalam history area
+git config = untuk memasukkan konfigurasi ke dalam git
+git branch = untuk membuat branch
+git help = untuk mencari manual penggunaan git
+
+
+3 AREA PADA REPO GIT
+- WORKING TREE = folder tempat kita bekerja
+- STAGING AREA = memberi tahu git kalau kalian sudah melakukan perubahan
+- HISTORY AREA = jika berhasil commit
+
+
+# GIT BRANCH
+- buat file mahasiswa.html di branch master,git add, git commit
+- buat 2 branch baru. git branch dosen, git branch staff
+- masuk ke branch dosen. git checkout dosen
+- buat file dosen.html, git add, git commit (atau git commit -am "message") di branch dosen
+- masuk ke branch staff. git checkout staff
+- buat file staff.html, git add, git commit (atau git commit -am "message") di branch staff
+
+
+git log
+alias graph="git log --all --decorate --oneline --graph"
+
+# GIT MERGE
+ADA DUA JENIS yaitu:
+- Fast forward
+- Three Way Merge
+
+
+# Fast forward
+- menggabungkan branch dosen dengan branch master dulu
+- pindahkan head ke branch master. git checkout master
+- merge branch dosen ke branch master. git merge dosen
+- check branch yang sudah merge. git branch --merged
+- hapus branch dosen. git branch -d dosen
+- force delete branch. git branch -D nama_branch
+
+
+# Three way merge
+- menggabungkan branch staff dengan branch master
+- merge branch staff ke branch master secara three way merge. git merge staff
+- save comment dari nano editor
+- check branch yang sudah merge. git branch --merged
+- hapus branch staff. git branch -d staff
+
+
+# GIT MERGE CONFLICT
+- buat branch baru (misalnya "dev")
+- masuk ke branch dev, git checkout dev
+- edit file "mahasiswa.html" di branch dev, git commit -am "message", git commit
+- kembali ke branch master, git checkout master
+- edit file "mahasiswa.html" di branch master pada line yang sama, git commit -am "message"
+- merge branch dev ke branch master, git merge dev
+- proses merge tertahan
+- perbaiki conflict secara manual
+- lanjutkan merge branch dev ke dalam branch master, git add ., lalu git commit -m "message"
+- hapus branch dev, git branch -d dev
+
+
+# CARA CHECKOUT KE COMMIT DI MASA LALU
+- cari 7 karakter awal dari commit di masa lalu yang ingin di tuju
+- lalu ketik git checkout 7karakter_commit
+- HEAD pada graph akan detached ke commit di masa lalu
+- kita bisa buat branch baru misalnya test_dosen
+- kita bisa membuat perubahan pada file dosen.html
+- lalu tinggal di merge
+
+
+# GIT REMOTE
+- github atau gitlab dikategorikan sebagai git remote
+- kita bisa upload kode di komputer lokal ke remote menggunakan kode git push
+- kita bisa mendownload kode di remote ke komputer loka menggunakan git pull
+
+
+# ILUSTRASI GIT REMOTE
+- buat repo baru di github (test_remote)
+- clone with https
+- copy alamat repo "https://github.com/rahadi1/test_remote.git "
+- buat folder baru (test_git_remote)
+- clone test remote ke dalam test_git_remote di local computer; git clone https://github.com/rahadi1/test_remote.git
+- kelebihan clone daripada download adalah: clone membuat remote dan local saling terhubung
+- masuk ke directory test_remote
+- ketik: git remote
+- ketik: git remote -v
+- ketik: git status
+- buat graph alias: alias graph="git log --all --decorate --oneline --graph"
+- ketik graph
+- buat file baru (misalnya index.html)
+- git add .;git commit -m "message";git push
+- cek konfigurasi;git config --list
+
+
+# KONFIGURASI USER DI SEBUAH FOLDER
+- git config --local user.name "rahadi" enter
+- git config --local user.email "email" enter
+
+
+# KONFIGURASI USER DI SEMUA FOLDER GIT
+- git config --global user.name "rahadi" enter
+- git config --global user.email "email" enter
+
+
+# BUAT REPO BARU DI GIT LOCAL
+- folder baru: test_remote_2
+- git init
+- buat file baru: index.php
+- git add .
+- git commit -m "message"
+- modifikasi index.php;git add .;git commit -am "message"
+- buat new repo di github, tapi jangan centang "readme"
+- lakukan langkah di bawah ini:
+-  …or push an existing repository from the command line
+-  git remote add origin https://github.com/rahadi1/test_remote_2.git
+-  git branch -M main
+-  git push -u origin main
+- sukses
+
+- modifikasi index.php
+- git commit -am "message"
+- git push
+
+
+# KASUS UNIK
+- buat file baru di test_remote_2 local dengan nama style.css, mengatur font-family: arial;git add .;git commit
+- ada teman buat file baru di github remote repo test_remote_2 dengan nama style.css tapi mengatur font-family: georgia; commit
+- setelah git push di local computer ternyata "rejected" oleh git
+- gunakan git fetch untuk menyamakan commit
+- git status; status diverged
+- graph; ada cabang baru
+- git pull; perbaiki conflict secara manual
+
+
+# GITHUB PAGES
+- buat repository baru dengan nama "rahadi1.github.io"
+- inisialisasi folder tempat menyimpan file web di local computer; git init
+- git add .
+- git commit -m "Hosting github pages"
+- git remote add origin https://github.com/rahadi1/rahadi1.github.io.git
+- git branch -M main
+- git push -u origin main
+
+
+# GITHUB PAGES TAMBAHAN
+- inisialisasi folder tempat menyimpan file web di local computer; git init
+- git add .
+- git commit -m "Hosting github pages"
+- buat repository baru misalnya "embeded"
+- git remote add origin https://github.com/rahadi1/rahadi1.github.io.git
+- git branch -M main
+- git push -u origin main
+- masuk ke repo embeded di github
+- masuk ke tab settings
+- cari github pages
+- pilih branch
+- pilih nama domain misalnya "rahadi1.githup.io/embeded"
+
+
+# MULTIPLE REMOTE
+- buka github sandhika galih
+- fork repository web landing page 
+- clone with https
+- copy alamat repo "https://github.com/rahadi1/test_remote.git "
+- buat folder baru (test_git_remote)
+- clone test remote ke dalam test_git_remote di local computer; git clone https://github.com/rahadi1/test_remote.git
+- cek "git remote" maka jawabannya adalah "origin"
+- cek "git remote -v" maka jawabannya adalah rahadi1
+- artinya kalau ada perubahan di repo asli (github sandhika galih), kita tidah tahu
+- bagaimana caranya supaya selalu mendapat update dari repo asli?
+- add remote baru; git remote add sandhikagalih https://github.com/sandhikagalih/simple-landing-page.git
+- cek git remote
+- cek git remote -v
+
+- cek graph; ternyata HEAD hanya ke origin
+- kita ingin HEAD juga ke sandhikagail
+- caranya harus fetch history commit ke local computer
+- ketik; git fetch sandhikagalih
+- kemudian ceritanya repo simple-web-landing di github sandhikagalik ada update baru
+- gimana caranya tahu update terbarunya?
+- dengan fetch; git fetch sandhikagalih
+- cek graph; graph
+- repo di sandhikagalih mendahului satu commit
+- cara supaya up to date?
+- harus merging ke repo sandhikagalih; git merge sandhikagalih/master
+- artinya repo local sudah sama dengan repo di sandhikagalih
+- tapi repo di rahadi1 belum sama dengan repo di sandhikagalih
+- cara supaya rahadi1 sama dengan repo di sandhikagalih?
+- push dari local (sudah sama) ke rahadi1; git push -origin master
