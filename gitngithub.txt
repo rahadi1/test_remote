@@ -70,6 +70,32 @@ FORKING menjadi jembatan antara repo original dengan duplikatnya
   - MELIHAT PERUBAHAN COMMIT SECARA VISUAL
   - KLIK REPONYA, KLIK INSIGHTS, KLIK NETWORK
 
+
+# 3. GITHUB BRANCH
+
+- Ada main branch (branch utama)
+- Kita bisa buat cabang dari sebuah branch utama (menambah fitur baru tanpa mengubah main branch)
+- atau ada dua pihak mengerjakan repo yang sama
+- Branching adalah membuat snapshot baru tanpa mengganggu branch utama
+
+- Implementasi github branch
+- klik branch dalam repo, buat branch baru (ex: fitur1), buat file baru (ex: comment2.txt), isi data ke dalam file baru, commit.
+- Di branch fitur1 skrng ada tombol tambahan "compare & pull request"
+- di repo sekarang ada 2 branch yaitu main branch dan fitur1 branch
+- klik insight-network; akan muncul cabang baru
+- edit dan commit lagi di branch fitur1
+
+- Merging: menggabungkan dua buah branch
+- klik "compare & pull request"
+- Kita akan memasukkan branch fitur1 ke dalam branch main
+- Cek apakah kedua branch bisa digabung
+- Buat pesan pull request dan klik "create pull request"
+- klik tab "pull request" dan klik tombol "merge pull request"
+- pull request successfully merge and closed
+- sekarang main branch sudah berubah
+- hapus branch fitur1, klik tab "branches" dan pilih simbol "hapus"`
+
+
 # GIT
 
 COMMAND:
