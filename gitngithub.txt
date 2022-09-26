@@ -96,6 +96,26 @@ FORKING menjadi jembatan antara repo original dengan duplikatnya
 - hapus branch fitur1, klik tab "branches" dan pilih simbol "hapus"`
 
 
+- CONFLICT MERGE
+
+- Buat branch Fitur2 from main dan branch fitur3 from main
+- Edit css anatomy.css dari branch fitur2
+- Edit css anatomy.css dari branch fitur3
+- merge main dengan fitur2; klik "compare & pull request fitur2"
+- cek apakah ada conflict
+- kalau tidak ada,klik "pull request"; klik "merge pull request";klik "confirm merge"
+
+- merge main dengan fitur3; klik "compare & pull request fitur3"
+- can't merge automatically
+- klik "create pull request"
+- klik "resolve conflict"; lakukan edit
+- klik "mark as resolved"; klik "commit merge"
+- klik "merge pull request"; klik "confirm merge"
+- cek "insight" dan "network"
+- hapus branch fitur2 dan fitur3 
+
+
+
 # GIT
 
 COMMAND:
