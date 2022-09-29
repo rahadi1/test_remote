@@ -115,6 +115,27 @@ FORKING menjadi jembatan antara repo original dengan duplikatnya
 - hapus branch fitur2 dan fitur3 
 
 
+# FORKING
+
+- Menduplikat repository orang lain, duplikat serta history commit ada di akun kita
+- Jembatan antara repo original dengan duplikatnya
+- Berkontribusi terhadap repo orang lain
+
+- Proses forking
+- Search: web programming unpas di akun github
+- cari repository "wpu resolusi"
+
+- cara pertama untuk forking
+- edit file orang, lalu forking alias commit
+
+- cara kedua untuk forking
+- klik tombol "fork" di kanan atas; dan repo sudah di fork
+- buat file baru di fork dengan nama "rahadi-resolusi.txt"; beri informasi di dalamnya
+- commit file "rahadi-resolusi.txt" ke main branch rahadi1
+- edit file "wpu-rencana-content.txt"; commit ke main branch
+- klik tombol "new pull request"; klik "create pull request
+- tinggal menunggu pemilik repo asli
+
 
 # GIT
 
